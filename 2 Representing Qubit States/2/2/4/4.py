@@ -6,4 +6,6 @@ qc.initialize(initial_state, 0)
 qc.measure_all()
 sim = Aer.get_backend('aer_simulator')  # Tell Qiskit how to simulate our circuit
 qc.save_statevector()
-qc.draw()
+result = sim.run(qc).result()
+state = result.get_statevector()
+print("State of Measured Qubit = " + str(state))
